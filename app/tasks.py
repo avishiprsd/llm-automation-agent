@@ -25,6 +25,12 @@ def execute_task(task_description):
     )
 
     try:
+        if not structured_task or structured_task.strip() == "":
+            return "Error: Empty response from LLM."
+
+        if "error" in structured_task.lower():
+            return f"Error: {structured_task}"
+
         task_info = json.loads(structured_task)
     except json.JSONDecodeError:
         return "Error: Unable to parse task description."
