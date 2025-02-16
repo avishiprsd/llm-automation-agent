@@ -8,3 +8,4 @@ beautifulsoup4==4.12.2  # For web scraping (if needed)
 lxml==5.1.0  # For parsing HTML/XML (if needed)
 tqdm==4.66.1  # For progress bars (optional)
 Faker==19.6.2
+python-dotenv
