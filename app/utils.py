@@ -1,9 +1,15 @@
 import os
+from dotenv import load_dotenv
 import openai
 
+
 def query_llm(prompt):
+    load_dotenv()
+
     """Queries the LLM (GPT-4o-Mini) and returns a response."""
-    openai.api_key = "eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjIzZjIwMDM4OTNAZHMuc3R1ZHkuaWl0bS5hYy5pbiJ9.kPdd7741VFTipdu3k6uOW6dzg8LPaSULwYgbD14y16E"#os.getenv("AIPROXY_TOKEN")  # Ensure token is set via env variable
+    openai.api_key = os.getenv("OPENAI_API_KEY")
+    if not openai.api_key:
+        raise ValueError("API Key is missing! Check your .env file or environment variables.")
 
     try:
         response = openai.Completion.create(
